@@ -11,16 +11,29 @@ import EcoIcon from '@material-ui/icons/Eco';
 import HomeIcon from '@material-ui/icons/Home';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import CodeIcon from '@material-ui/icons/Code';
+import Footer from '../components/Footer';
+import ActiveLink from '../components/ActiveLink';
 
 const useStyles = makeStyles((theme) => ({
   hero: {
     background: 'url(/greenhouse2.jpg) no-repeat center center fixed',
     backgroundSize: 'cover',
     color: '#fff',
-    height: 'calc(100vh - 64px)'
+    height: 'calc(100vh - 64px)',
+  },
+  heroTextContainer: {
+    maxWidth: '500px',
+    textAlign: 'center',
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      margin: '70px auto 100px auto',
+    },
   },
   heroMessage: {
     fontSize: '50px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '30px',
+    },
   },
   whiteColor: {
     color: '#fff'
@@ -42,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto'
   },
   downloadContainer: {
-    padding: '150px 0',
+    padding: '50px 0',
     color: '#fff',
     background: 'linear-gradient(#8BA910, #006f02)'
   },
@@ -113,14 +126,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(255, 255, 255, 0.3)',
     backgroundColor: '#222222'
   },
-  listInline: {
-    listStyleType: 'none',
-    padding: 0
-  },
-  listItemInline: {
-    display: 'inline-block',
-    margin: '0 5px'
-  }
 }));
 
 export default function Index() {
@@ -132,13 +137,13 @@ export default function Index() {
         <Grid item xs={12} className={classes.hero}>
           <Container className={classes.fill}>
             <Grid container className={classes.fill}>
-              <Grid item lg={7} xs={12} className={classes.yMargin}>
-                <div className="header-content mx-auto">
+              <Grid item md={7} xs={12} className={classes.yMargin}>
+                <div className={classes.heroTextContainer}>
                   <h1 className={classes.heroMessage}>Grow any kind of plant efficiently with Plant Guru!</h1>
                   <Button variant="contained" color="primary" className={classes.whiteColor} component={Link} href="/register">Start Now!</Button>
                 </div>
               </Grid>
-              <Grid item lg={5} xs={12} className={classes.yMargin}>
+              <Grid item md={5} xs={12} className={classes.yMargin}>
                 <div className={classes.deviceContainer}>
                   <div className="device-mockup iphone6_plus portrait white">
                     <div className="device">
@@ -186,17 +191,17 @@ export default function Index() {
                     <Grid item xs={6} className={classes.featureItem}>
                       <HomeIcon className={classes.featureIcon} color="primary" />
                       <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Greenhouses</Typography>
-                      <p className="text-muted">Deploy and grow multiple indoor greenhouses controlled by PlantGuru!</p>
+                      <p className={classes.featureText}>Deploy and grow multiple indoor greenhouses controlled by PlantGuru!</p>
                     </Grid>
                     <Grid item xs={6} className={classes.featureItem}>
                       <EcoIcon className={classes.featureIcon} color="primary" />
                       <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Plant Species</Typography>
-                      <p className="text-muted">Grow a huge combination of plant species in one greenhouse!</p>
+                      <p className={classes.featureText}>Grow a huge combination of plant species in one greenhouse!</p>
                     </Grid>
                     <Grid item xs={6} className={classes.featureItem}>
                       <WbSunnyIcon className={classes.featureIcon} color="primary" />
                       <Typography variant="h3" className={classes.featureTitle} align="center">Environmental Control</Typography>
-                      <p className="text-muted">PlantGuru controls all environmental statuses like moisture and light for you!</p>
+                      <p className={classes.featureText}>PlantGuru controls all environmental statuses like moisture and light for you!</p>
                     </Grid>
                     <Grid item xs={6} className={classes.featureItem}>
                       <CodeIcon className={classes.featureIcon} color="primary" />
@@ -207,28 +212,15 @@ export default function Index() {
                 </Grid>
               </Grid>
             </Container>
-          </Grid>
-        </Grid>
+          </Grid>        
         <Grid item xs={12} className={classes.ctaContainer}>
           <Container>
             <Typography variant="h2" className={classes.ctaMessage}>Stop waiting.<br/>Start growing.</Typography>
-            <Button variant="contained" color="primary" className={classes.whiteColor} component={Link} href="/register">Let's Get Started!</Button>
+            <Button variant="contained" color="primary" className={classes.whiteColor}><ActiveLink href="/register">Let's Get Started!</ActiveLink></Button>
           </Container>
         </Grid>
-        <Grid item xs={12} className={classes.footer}>
-          <Container>
-            <footer>
-              <div className="container">
-                <p>{new Date().getFullYear()} © PlantGuru. All Rights Reserved.</p>
-                <ul className={classes.listInline}>
-                  <li className={classes.listItemInline}><Link color="inherit" href="#">Privacy</Link></li>
-                  <li className={classes.listItemInline}><Link color="inherit" href="#">Terms</Link></li>
-                  <li className={classes.listItemInline}><Link color="inherit" href="#">FAQ</Link></li>
-                </ul>
-              </div>
-            </footer>
-          </Container>
-        </Grid>
+        <Footer />
+      </Grid>
     </Box>
   );
 }
