@@ -1,65 +1,226 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Link from '../components/Link';
+import Header from '../components/Header';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import EcoIcon from '@material-ui/icons/Eco';
+import HomeIcon from '@material-ui/icons/Home';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import CodeIcon from '@material-ui/icons/Code';
+import Footer from '../components/Footer';
+import ActiveLink from '../components/ActiveLink';
+
+const useStyles = makeStyles((theme) => ({
+  hero: {
+    background: 'url(/greenhouse2.jpg) no-repeat center center fixed',
+    backgroundSize: 'cover',
+    color: '#fff',
+    height: 'calc(100vh - 64px)',
+  },
+  heroTextContainer: {
+    maxWidth: '500px',
+    textAlign: 'center',
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      margin: '70px auto 100px auto',
+    },
+  },
+  heroMessage: {
+    fontSize: '50px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '30px',
+    },
+  },
+  whiteColor: {
+    color: '#fff'
+  },
+  yMargin: {
+    marginBottom: 'auto',
+    marginTop: 'auto'
+  },
+  xMargin: {
+    marginRight: 'auto',
+    marginLeft: 'auto'
+  },
+  fill: {
+    height: '100%'
+  },
+  deviceContainer: {
+    maxWidth: '325px',
+    marginRight: 'auto',
+    marginLeft: 'auto'
+  },
+  downloadContainer: {
+    padding: '50px 0',
+    color: '#fff',
+    background: 'linear-gradient(#8BA910, #006f02)'
+  },
+  downloadMessage: {
+    fontSize: '70px',
+    lineHeight: '1.2',
+    textAlign: 'center',
+    margin: 0
+  },
+  grayBackground: {
+    backgroundColor: '#f0f0f0',
+    padding: '20px'
+  },
+  breakContainer: {
+    margin: '20px'
+  },
+  breakText: {
+    fontSize: '40px',
+    margin: '5px',
+    color: '#3c4b64'
+  },
+  subBreakText: {
+    width: '100%',
+    display: 'block',
+    marginBottom: '20px',
+    color: '#3c4b64'
+  },
+  featureTitle: {
+    fontSize: '30px',
+    color: '#3c4b64'
+  },
+  featureText: {
+    color: '#3c4b64',
+  },
+  featureIcon: {
+    width: '100%',
+    textAlign: 'center',
+    fontSize: '80px',
+    display: 'block',
+    marginBottom: '15px',
+  },
+  featureItem: {
+    padding: '50px 20px',
+    textAlign: 'center'
+  },
+  featureContainer: {
+    margin: '50px 0'
+  },
+  hr: {
+    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+  },
+  ctaContainer: {
+    padding: '250px 0',
+    background: 'url(/greenhousefade.jpg) no-repeat center center fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
+  },
+  ctaMessage: {
+    fontSize: '80px',
+    marginBottom: '20px',
+    backgroundImage: 'linear-gradient(90deg, #8BA910, #006f02)',
+    "-webkit-background-clip": 'text',
+    "-webkit-text-fill-color": 'transparent'
+  },
+  footer: {
+    padding: '25px 0',
+    textAlign: 'center',
+    color: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: '#222222'
+  },
+}));
+
+export default function Index() {
+  const classes = useStyles();
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    <Box>
+      <Header />
+      <Grid container>
+        <Grid item xs={12} className={classes.hero}>
+          <Container className={classes.fill}>
+            <Grid container className={classes.fill}>
+              <Grid item md={7} xs={12} className={classes.yMargin}>
+                <div className={classes.heroTextContainer}>
+                  <h1 className={classes.heroMessage}>Grow any kind of plant efficiently with Plant Guru!</h1>
+                  <Button variant="contained" color="primary" className={classes.whiteColor} component={Link} href="/register">Start Now!</Button>
+                </div>
+              </Grid>
+              <Grid item md={5} xs={12} className={classes.yMargin}>
+                <div className={classes.deviceContainer}>
+                  <div className="device-mockup iphone6_plus portrait white">
+                    <div className="device">
+                      <div className="screen">
+                        <img src="/plant.jpg" className={classes.fill} alt=""/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
+          </Container>
+        </Grid>
+        <Grid item xs={12} className={classes.downloadContainer}>
+          <Container>
+            <Grid container className={classes.fill}>
+              <Grid item xs={8} className={classes.xMargin}>
+                <h2 className={classes.downloadMessage}>Install your device and start growing!</h2>
+                <p>With our combination of a intelligent device infrastructure, dashboard and mobile app you can easily grow your veggies at home!</p>
+              </Grid>
+            </Grid>
+          </Container>
+        </Grid>
+        <Grid item xs={12} className={classes.grayBackground}>
+          <Container>
+              <div className={classes.breakContainer}>
+                  <Typography variant="h2" align="center" className={classes.breakText}>{'Plant Guru brings a load of great features to grow your plants!'}</Typography>
+                  <Typography align="center" className={classes.subBreakText}>{'Check out what you are able to accomplish!'}</Typography>
+                  <hr className={classes.hr} />
+              </div>
+              <Grid container className={classes.featureContainer}>
+                <Grid item xs={12} lg={4} className={classes.yMargin}>
+                  <div className={classes.deviceContainer}>
+                    <div className="device-mockup iphone6_plus portrait white">
+                      <div className="device">
+                        <div className="screen">
+                          <img src="/plant.jpg" className={classes.fill} alt=""/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item lg={8} xs={12} className={classes.yMargin}>
+                  <Grid container>
+                    <Grid item xs={6} className={classes.featureItem}>
+                      <HomeIcon className={classes.featureIcon} color="primary" />
+                      <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Greenhouses</Typography>
+                      <p className={classes.featureText}>Deploy and grow multiple indoor greenhouses controlled by PlantGuru!</p>
+                    </Grid>
+                    <Grid item xs={6} className={classes.featureItem}>
+                      <EcoIcon className={classes.featureIcon} color="primary" />
+                      <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Plant Species</Typography>
+                      <p className={classes.featureText}>Grow a huge combination of plant species in one greenhouse!</p>
+                    </Grid>
+                    <Grid item xs={6} className={classes.featureItem}>
+                      <WbSunnyIcon className={classes.featureIcon} color="primary" />
+                      <Typography variant="h3" className={classes.featureTitle} align="center">Environmental Control</Typography>
+                      <p className={classes.featureText}>PlantGuru controls all environmental statuses like moisture and light for you!</p>
+                    </Grid>
+                    <Grid item xs={6} className={classes.featureItem}>
+                      <CodeIcon className={classes.featureIcon} color="primary" />
+                      <Typography variant="h3" className={classes.featureTitle} align="center">Open Source</Typography>
+                      <p className={classes.featureText}>You can see the raw code but also enjoy the paid service we provide!</p>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Container>
+          </Grid>        
+        <Grid item xs={12} className={classes.ctaContainer}>
+          <Container>
+            <Typography variant="h2" className={classes.ctaMessage}>Stop waiting.<br/>Start growing.</Typography>
+            <Button variant="contained" color="primary" className={classes.whiteColor}><ActiveLink href="/register">Let's Get Started!</ActiveLink></Button>
+          </Container>
+        </Grid>
+        <Footer />
+      </Grid>
+    </Box>
+  );
 }
