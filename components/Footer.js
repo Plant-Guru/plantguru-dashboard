@@ -29,7 +29,8 @@ export default function Footer() {
                     <div className="container">
                         <p>{new Date().getFullYear()} © Plant Guru. All Rights Reserved.</p>
                         <ul className={classes.listInline}>
-                        <li className={classes.listItemInline}><Link color="inherit" href="/privacy">Privacy</Link></li>
+                            <li className={classes.listItemInline}><Link color="inherit" href="/privacy">Privacy</Link></li>
+                            <li className={classes.listItemInline}><Link color="inherit" href="/imprint">Imprint</Link></li>
                         </ul>
                     </div>
                 </footer>

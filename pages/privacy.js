@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Index() {
+export default function Privacy() {
     const classes = useStyles();
     return (
         <Box>
