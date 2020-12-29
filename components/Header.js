@@ -41,7 +41,7 @@ export default function Header() {
         <AppBar position="static">
             <Container disableGutters={true}>
                 <Toolbar className={classes.whiteColor}>
-                    <Typography variant="h6" className={classes.fullLogo}><ActiveLink href="/"><img className={classes.logo} src="/logo.png"/>{'Plant Guru'}</ActiveLink></Typography>
+                    <Typography variant="h6" className={classes.fullLogo}><ActiveLink href="/"><img className={classes.logo} src="/logo.png"/><span>{'Plant Guru'}</span></ActiveLink></Typography>
                     <Button><ActiveLink href="https://github.com/Plant-Guru" className={classes.link} target={'_blank'}>
                         <GitHubIcon className={classes.middle} />
                         <span className={classes.linkText}>{'Github'}</span>

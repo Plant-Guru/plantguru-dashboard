@@ -2,6 +2,9 @@ a {
     text-decoration: none;
     color: #000;
 }
+header a span {
+    vertical-align: middle;
+}
 button a, header a {
     color: #fff;
 }
@@ -110,4 +113,10 @@ button a, header a {
     white-space: nowrap;
     width: auto;
     outline: none;
+}
+
+@media (max-width: 445px) {
+    header h6 a span {
+        display: none;
+    }
 }
