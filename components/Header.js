@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import ActiveLink from '../components/ActiveLink';
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {},
@@ -36,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
     const classes = useStyles();
-    
+    const [ session, loading ] = useSession()
+
     return (
         <AppBar position="static">
             <Container disableGutters={true}>
@@ -46,7 +48,9 @@ export default function Header() {
                         <GitHubIcon className={classes.middle} />
                         <span className={classes.linkText}>{'Github'}</span>
                     </ActiveLink></Button>
-                    <Button><ActiveLink href="/register">{'Login'}</ActiveLink></Button>
+                    {!session &&
+                        <Button onClick={signIn}>{'Login'}</Button>
+                    }
                     <Button><ActiveLink href="/register">{'Register'}</ActiveLink></Button>
                 </Toolbar>
             </Container>
