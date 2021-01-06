@@ -13,6 +13,9 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import CodeIcon from '@material-ui/icons/Code';
 import Footer from '../components/Footer';
 import ActiveLink from '../components/ActiveLink';
+import dynamic from 'next/dynamic';
+
+const CSRFComponent = dynamic(() => import('../components/CSRF').then((comp) => comp.CSRF), { ssr: false })
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -133,6 +136,7 @@ export default function Index() {
   return (
     <Box>
       <Header />
+      <CSRFComponent />
       <Grid container>
         <Grid item xs={12} className={classes.hero}>
           <Container className={classes.fill}>
@@ -212,7 +216,7 @@ export default function Index() {
                 </Grid>
               </Grid>
             </Container>
-          </Grid>        
+          </Grid>
         <Grid item xs={12} className={classes.ctaContainer}>
           <Container>
             <Typography variant="h2" className={classes.ctaMessage}>Stop waiting.<br/>Start growing.</Typography>
