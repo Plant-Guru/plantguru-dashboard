@@ -120,3 +120,7 @@ button a, header a {
         display: none;
     }
 }
+
+#csrf_token {
+    display: none;
+}
