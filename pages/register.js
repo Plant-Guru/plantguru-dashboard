@@ -2,79 +2,102 @@
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Header from '../components/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Mailchimp from 'react-mailchimp-form'
+import FooterHero from '../components/FooterHero';
 
 const useStyles = makeStyles((theme) => ({
-    title: {
-        fontSize: '40px',
-        textAlign: 'center',
-        marginBottom: '10px'
-    },
-    titleSubText: {
-        fontSize: '20px',
-        textAlign: 'center',
-        display: 'block',
-        marginBottom: '20px'
-    },
-    titleContainer: {
-        margin: '20px 0'
-    },
-    grayBackground: {
-        backgroundColor: '#f0f0f0',
-        padding: '20px'
-    },
-    ctaContainer: {
-        padding: '250px 0',
-        background: 'url(/greenhousefade.jpg) no-repeat center center fixed',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover'
-    },
-    ctaMessage: {
-        fontSize: '80px',
-        marginBottom: '20px',
-        backgroundImage: 'linear-gradient(90deg, #8BA910, #006f02)',
-        "-webkit-background-clip": 'text',
-        "-webkit-text-fill-color": 'transparent'
-    },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
-export default function Index() {
-    const classes = useStyles();
-    return (
-        <Box>
-            <Header />
-            <Grid container>
-                <Grid item xs={12} className={classes.grayBackground}>
-                    <Container>
-                        <Box className={classes.titleContainer}>
-                            <Typography variant="h1" className={classes.title}>Newsletter</Typography>
-                            <Typography variant="h2" className={classes.titleSubText}>Get notified when we officially launch!</Typography>
-                            <Mailchimp
-                                action='https://gmail.us2.list-manage.com/subscribe/post?u=1e4f1477920b53ab1ccb398fb&amp;id=bd16662d51'
-                                fields={[
-                                    {
-                                        name: 'EMAIL',
-                                        placeholder: 'Email',
-                                        type: 'email',
-                                        required: true,
-                                    }
-                                ]}
-                                className="mailchimp"
-                            />
-                        </Box>
-                    </Container>
-                </Grid>
-                <Grid item xs={12} className={classes.ctaContainer}>
-                    <Container>
-                        <Typography variant="h2" className={classes.ctaMessage}>Stop waiting.<br/>Start growing.</Typography>
-                    </Container>
-                </Grid>
-                <Footer />
-            </Grid>
-        </Box>
-    );
+export default function Register() {
+  const classes = useStyles();
+
+  return (
+    <Box>
+        <Header />
+        <Grid container>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}><LockOutlinedIcon /></Avatar>
+                    <Typography component="h1" variant="h5">Sign in</Typography>
+                    <form className={classes.form} noValidate>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            {"Sign In"}
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" variant="body2">{"Forgot password?"}</Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body2">{"Don't have an account? Sign Up"}</Link>
+                            </Grid>
+                        </Grid>
+                    </form>
+                </div>
+            </Container>
+            <FooterHero showCtaButton={false} />
+            <Footer />
+        </Grid>
+    </Box>
+  );
 }

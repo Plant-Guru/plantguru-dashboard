@@ -12,8 +12,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import CodeIcon from '@material-ui/icons/Code';
 import Footer from '../components/Footer';
-import ActiveLink from '../components/ActiveLink';
 import dynamic from 'next/dynamic';
+import FooterHero from '../components/FooterHero';
 
 const CSRFComponent = dynamic(() => import('../components/CSRF').then((comp) => comp.CSRF), { ssr: false })
 
@@ -110,19 +110,6 @@ const useStyles = makeStyles((theme) => ({
   hr: {
     borderTop: '1px solid rgba(0, 0, 0, 0.1)',
   },
-  ctaContainer: {
-    padding: '250px 0',
-    background: 'url(/greenhousefade.jpg) no-repeat center center fixed',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover'
-  },
-  ctaMessage: {
-    fontSize: '80px',
-    marginBottom: '20px',
-    backgroundImage: 'linear-gradient(90deg, #8BA910, #006f02)',
-    "-webkit-background-clip": 'text',
-    "-webkit-text-fill-color": 'transparent'
-  },
   footer: {
     padding: '25px 0',
     textAlign: 'center',
@@ -173,56 +160,51 @@ export default function Index() {
         </Grid>
         <Grid item xs={12} className={classes.grayBackground}>
           <Container>
-              <div className={classes.breakContainer}>
-                  <Typography variant="h2" align="center" className={classes.breakText}>{'Plant Guru brings a load of great features to grow your plants!'}</Typography>
-                  <Typography align="center" className={classes.subBreakText}>{'Check out what you are able to accomplish!'}</Typography>
-                  <hr className={classes.hr} />
-              </div>
-              <Grid container className={classes.featureContainer}>
-                <Grid item xs={12} lg={4} className={classes.yMargin}>
-                  <div className={classes.deviceContainer}>
-                    <div className="device-mockup iphone6_plus portrait white">
-                      <div className="device">
-                        <div className="screen">
-                          <img src="/plant.jpg" className={classes.fill} alt=""/>
-                        </div>
+            <div className={classes.breakContainer}>
+                <Typography variant="h2" align="center" className={classes.breakText}>{'Plant Guru brings a load of great features to grow your plants!'}</Typography>
+                <Typography align="center" className={classes.subBreakText}>{'Check out what you are able to accomplish!'}</Typography>
+                <hr className={classes.hr} />
+            </div>
+            <Grid container className={classes.featureContainer}>
+              <Grid item xs={12} lg={4} className={classes.yMargin}>
+                <div className={classes.deviceContainer}>
+                  <div className="device-mockup iphone6_plus portrait white">
+                    <div className="device">
+                      <div className="screen">
+                        <img src="/plant.jpg" className={classes.fill} alt=""/>
                       </div>
                     </div>
                   </div>
-                </Grid>
-                <Grid item lg={8} xs={12} className={classes.yMargin}>
-                  <Grid container>
-                    <Grid item xs={6} className={classes.featureItem}>
-                      <HomeIcon className={classes.featureIcon} color="primary" />
-                      <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Greenhouses</Typography>
-                      <p className={classes.featureText}>Deploy and grow multiple indoor greenhouses controlled by PlantGuru!</p>
-                    </Grid>
-                    <Grid item xs={6} className={classes.featureItem}>
-                      <EcoIcon className={classes.featureIcon} color="primary" />
-                      <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Plant Species</Typography>
-                      <p className={classes.featureText}>Grow a huge combination of plant species in one greenhouse!</p>
-                    </Grid>
-                    <Grid item xs={6} className={classes.featureItem}>
-                      <WbSunnyIcon className={classes.featureIcon} color="primary" />
-                      <Typography variant="h3" className={classes.featureTitle} align="center">Environmental Control</Typography>
-                      <p className={classes.featureText}>PlantGuru controls all environmental statuses like moisture and light for you!</p>
-                    </Grid>
-                    <Grid item xs={6} className={classes.featureItem}>
-                      <CodeIcon className={classes.featureIcon} color="primary" />
-                      <Typography variant="h3" className={classes.featureTitle} align="center">Open Source</Typography>
-                      <p className={classes.featureText}>You can see the raw code but also enjoy the paid service we provide!</p>
-                    </Grid>
+                </div>
+              </Grid>
+              <Grid item lg={8} xs={12} className={classes.yMargin}>
+                <Grid container>
+                  <Grid item xs={6} className={classes.featureItem}>
+                    <HomeIcon className={classes.featureIcon} color="primary" />
+                    <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Greenhouses</Typography>
+                    <p className={classes.featureText}>Deploy and grow multiple indoor greenhouses controlled by PlantGuru!</p>
+                  </Grid>
+                  <Grid item xs={6} className={classes.featureItem}>
+                    <EcoIcon className={classes.featureIcon} color="primary" />
+                    <Typography variant="h3" className={classes.featureTitle} align="center">Multiple Plant Species</Typography>
+                    <p className={classes.featureText}>Grow a huge combination of plant species in one greenhouse!</p>
+                  </Grid>
+                  <Grid item xs={6} className={classes.featureItem}>
+                    <WbSunnyIcon className={classes.featureIcon} color="primary" />
+                    <Typography variant="h3" className={classes.featureTitle} align="center">Environmental Control</Typography>
+                    <p className={classes.featureText}>PlantGuru controls all environmental statuses like moisture and light for you!</p>
+                  </Grid>
+                  <Grid item xs={6} className={classes.featureItem}>
+                    <CodeIcon className={classes.featureIcon} color="primary" />
+                    <Typography variant="h3" className={classes.featureTitle} align="center">Open Source</Typography>
+                    <p className={classes.featureText}>You can see the raw code but also enjoy the paid service we provide!</p>
                   </Grid>
                 </Grid>
               </Grid>
-            </Container>
-          </Grid>
-        <Grid item xs={12} className={classes.ctaContainer}>
-          <Container>
-            <Typography variant="h2" className={classes.ctaMessage}>Stop waiting.<br/>Start growing.</Typography>
-            <Button variant="contained" color="primary" className={classes.whiteColor}><ActiveLink href="/register">Let's Get Started!</ActiveLink></Button>
+            </Grid>
           </Container>
         </Grid>
+        <FooterHero />
         <Footer />
       </Grid>
     </Box>
