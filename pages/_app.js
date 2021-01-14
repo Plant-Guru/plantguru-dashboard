@@ -4,6 +4,9 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../styles/theme';
 import '../styles/special.css';
+import dynamic from 'next/dynamic';
+
+const CSRFComponent = dynamic(() => import('../components/CSRF').then((comp) => comp.CSRF), { ssr: false })
 
 function MyApp(props) {
   const { Component, pageProps } = props;
@@ -22,6 +25,7 @@ function MyApp(props) {
         <title>Plant Guru · Smart Indoor Gardening</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
+      <CSRFComponent />
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />

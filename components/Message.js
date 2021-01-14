@@ -24,7 +24,7 @@ export default function Message(props) {
 
     return (
         <div className={classes.root}>
-            <Collapse in={open}>
+            <Collapse in={open} appear={true}>
                 <Alert
                     severity={severity}
                     action={

@@ -15,8 +15,6 @@ import Footer from '../components/Footer';
 import dynamic from 'next/dynamic';
 import FooterHero from '../components/FooterHero';
 
-const CSRFComponent = dynamic(() => import('../components/CSRF').then((comp) => comp.CSRF), { ssr: false })
-
 const useStyles = makeStyles((theme) => ({
   hero: {
     background: 'url(/greenhouse2.jpg) no-repeat center center fixed',
@@ -123,7 +121,6 @@ export default function Index() {
   return (
     <Box>
       <Header />
-      <CSRFComponent />
       <Grid container>
         <Grid item xs={12} className={classes.hero}>
           <Container className={classes.fill}>

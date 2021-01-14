@@ -47,6 +47,7 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [password_confirmation, setPasswordConfirmation] = useState('');
   const [messages, setMessages] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   const onFormSubmit = e => {
     e.preventDefault();
@@ -54,22 +55,29 @@ export default function Register() {
     console.log(password);
     console.log(password_confirmation);
     axios.post('registration', {
-      email,
-      password,
-      password_confirmation
+      user: {
+        email,
+        password,
+        password_confirmation
+      }
     }).then((response) => {
       console.log(response);
       // @todo check response and show message
     }, (error) => {
       // @todo show error
-      console.log(error);
       let alerts = JSON.parse(JSON.stringify(messages));
       alerts.shift();
       alerts.push({
+        key: 'error' + new Date().getTime(),
         text: error.message,
         level: 'error'
       });
       setMessages(alerts);
+      console.log(error.response.data)
+      console.log("hier", error.response && error.response.data && error.response.data.error && error.response.data.errors);
+      if(error.response && error.response.data && error.response.data.error && error.response.data.error.errors) {
+        setErrors(error.response.data.error.errors);
+      }
     });
   };
 
@@ -95,6 +103,8 @@ export default function Register() {
                             autoFocus
                             value={email}
                             onChange={e => { setEmail(e.target.value) }}
+                            error={errors.email}
+                            helperText={errors.email ? errors.email.join('\n'): ''}
                         />
                         <TextField
                             variant="outlined"
@@ -108,6 +118,8 @@ export default function Register() {
                             autoComplete="current-password"
                             value={password}
                             onChange={e => { setPassword(e.target.value) }}
+                            error={errors.password}
+                            helperText={errors.password ? errors.password.join('\n'): ''}
                         />
                         <TextField
                             variant="outlined"
@@ -121,6 +133,8 @@ export default function Register() {
                             autoComplete="current-password"
                             value={password_confirmation}
                             onChange={e => { setPasswordConfirmation(e.target.value) }}
+                            error={errors.password_confirmation}
+                            helperText={errors.password_confirmation ? errors.password_confirmation.join('\n'): ''}
                         />
                         <Button
                             type="submit"
@@ -133,7 +147,7 @@ export default function Register() {
                         </Button>
                         <div className={classes.messageContainer}>
                           {messages.map(message => (
-                            <Message level={message.level} text={message.text} />
+                            <Message key={message.key} level={message.level} text={message.text} unmountOnExit={true} />
                           ))}
                         </div>
                         <Grid container>
